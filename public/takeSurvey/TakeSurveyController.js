@@ -1,6 +1,7 @@
 (function () {
 
     var mod = angular.module("SurveyQuestions");
+    mod.controller("TakeSurveyController", ["$scope", "$http", myfunction]);
 
     function myfunction($scope, $http) {
         
@@ -25,6 +26,5 @@
         };
     }
 
-    mod.controller("TakeSurveyController", ["$scope", "$http", myfunction]);
 
 }());
