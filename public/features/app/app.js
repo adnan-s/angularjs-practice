@@ -6,23 +6,27 @@
     app.config(($routeProvider) => {
         $routeProvider
             .when('/', {
-                templateUrl: 'home/home.html',
+                templateUrl: 'features/home/home.html',
                 controller: 'homeController'
             })
             .when('/createsurvey', {
-                templateUrl: 'createsurvey/CreateSurvey.html',
+                templateUrl: 'features/survey/createSurvey/CreateSurvey.html',
                 controller: 'CreateSurveyController'
             })
             .when('/takesurvey', {
-                templateUrl: 'takesurvey/takesurvey.html',
+                templateUrl: 'features/survey/takeSurvey/takesurvey.html',
                 controller: 'TakeSurveyController'
             })
             .when('/surveylist', {
-                templateUrl: 'surveyList/surveyList.html',
+                templateUrl: 'features/survey/surveyList/surveyList.html',
                 controller: 'surveyListController'
             })
+            .when('/addquestion/:id', {
+                templateUrl: 'features/survey/addQuestion/addQuestion.html',
+                controller: 'addQuestionController'
+            })
             .when('/about', {
-                templateUrl: 'about/about.html',
+                templateUrl: 'features/about/about.html',
                 controller: 'AboutUs'
             })
             .otherwise({ redirectTo: '/' })

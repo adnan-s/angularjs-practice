@@ -1,9 +1,9 @@
 (function () {
 
     var mod = angular.module('SurveyQuestions');
-    mod.controller("surveyListController", ["$scope","$http", surveyList]);
+    mod.controller("surveyListController", ["$scope","$http", "$location", surveyList]);
 
-    function surveyList($scope, $http) {
+    function surveyList($scope, $http, $location) {
 
         $scope.message = "Survey List";
 
@@ -14,7 +14,7 @@
         })
 
         $scope.onAddQuestions = (surveyId) => {
-            console.log('this survey id:', surveyId);
+            $location.path('/addquestion/:' + surveyId);
         }
 
 
