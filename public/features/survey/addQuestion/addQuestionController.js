@@ -1,8 +1,8 @@
 (function () {
     var mod = angular.module('SurveyQuestions');
-    mod.controller('addQuestionController', ['$scope', '$http', '$location', addQuestion]);
+    mod.controller('addQuestionController', ['$scope', 'surveyFactory', '$location', addQuestion]);
 
-    function addQuestion($scope, $http, $location) {
+    function addQuestion($scope, surveyFactory, $location) {
         $scope.title = "Add Questions";
 
         $scope.question = {
@@ -24,12 +24,8 @@
         }
 
         $scope.saveQuestion = () => {
-            $http({
-                method: 'POST',
-                url: 'http://localhost:3000/addquestion',
-                data: $scope.question
-            }).then((res) => {
-                console.log(res.data);
+            surveyFactory.AddQuestion.then((data) => {
+                alert('Record added successfully.');
                 $scope.question = {
                     surveyId: 1,
                     description: '',

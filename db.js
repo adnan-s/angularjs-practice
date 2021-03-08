@@ -27,14 +27,16 @@ module.exports = {
         });
     },
     getDataSet: (query) => {
-        sql.connect(config).then(pool => {
-            return pool.request().query(query);
-        }).then(result => {
-            sql.close();
-            return result.recordset;
-        }).catch(err => {
-            sql.close();
-            return 0;
+        return new Promise((resolve, reject) => {
+            sql.connect(config).then(pool => {
+                return pool.request().query(query);
+            }).then(result => {
+                sql.close();
+                resolve(result.recordset);
+            }).catch(err => {
+                sql.close();
+                reject(undefined);
+            });    
         });
     },
 

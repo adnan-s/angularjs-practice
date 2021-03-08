@@ -4,26 +4,26 @@
     mod.controller("TakeSurveyController", ["$scope", "$http", myfunction]);
 
     function myfunction($scope, $http) {
-        
-        $scope.index = 0;
-        
+
         $http.get('http://localhost:3000/questions')
         .then((response) => {
             $scope.questions = response.data;
-            $scope.userResponse = [];    
-        })
+            $scope.userResponse = [
+                { SurveyId: 1, QuestionId: 1, Response: ''}
+            ];
+        });
 
-        $scope.next = () => {
-            if($scope.index < $scope.questions.length -1) {
-                $scope.index++;
-            }
-        };
+        $scope.SaveResponse = () => {
+            console.log($scope.userResponse);
+        }
 
-        $scope.previous =() => {
-            if($scope.index >= 1) {
-               $scope.index --;
-            }
-        };
+        $scope.radioChecked = (questionId, text) => {
+            console.log(questionId, text);
+            // check if user has already responded for this question or not. 
+            // if he has then update the response in userResponse Array.
+            // if he hasn't then add the user response in array.
+        }
+
     }
 
 

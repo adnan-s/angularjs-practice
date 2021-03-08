@@ -39,13 +39,16 @@ app.post('/addquestion', (req, res) => {
 
 app.get('/questions',(req,res) => {
     var query = "select * from tblQuestion where SurveyId = 1";
-    db.getDataSet(query).then((questions) => {
+
+    db.getDataSet(query).then((dsQuestions) => {
         query = "select * from tblOptions where Questionid in (select Id from tblQuestion where SurveyId = 1)"
-        db.getDataSet(query).then((options) => {
-            questions.forEach((q) => {
-                q.options = options.filter( option => option.questionId === q.id)
+
+        db.getDataSet(query).then((dsOptions) => {
+
+            dsQuestions.forEach((q) => {
+                q.options = dsOptions.filter( option => option.QuestionId === q.Id)
             })
-            res.status(200).send(questions);
+            res.status(200).send(dsQuestions);
         });    
     });
 });

@@ -1,23 +1,22 @@
 (function () {
 
     var mod = angular.module('SurveyQuestions');
-    mod.controller("surveyListController", ["$scope","$http", "$location", surveyList]);
+    mod.controller("surveyListController", ["$scope","surveyFactory", "$location", surveyList]);
 
-    function surveyList($scope, $http, $location) {
+    function surveyList($scope, surveyFactory, $location) {
+
+        console.log(surveyFactory);
 
         $scope.message = "Survey List";
 
-        $http.get('http://localhost:3000/surveylist/')
-        .then((response) => {
-            $scope.surveylist = response.data;
+        surveyFactory.getAllSurvey.then((data) => {
+            $scope.surveylist = data;
             $scope.userResponse = [];
         })
 
         $scope.onAddQuestions = (surveyId) => {
             $location.path('/addquestion/:' + surveyId);
         }
-
-
 
     }
 }());
