@@ -1,0 +1,21 @@
+<div ng-repeat="question in questions track by $index">
+
+    <div class="card" ng-if="questions.length > 0">
+        <div class="card-header">
+            {{ ($index + 1) + '. ' + question.Description }}
+        </div>
+        <div class="card-body">
+            <div ng-repeat="opotion in question.options">
+                <div id="option.Id + '-' + question.Id">
+                    <input ng-click="radioChecked(question.Id, opotion.Text)" type="radio" id="opotion.Id" name="option.Id + '-' + question.Id"> {{ opotion.Text }}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<div>
+    <input type="button" value="Save" ng-click="SaveResponse()">
+</div>
+
+

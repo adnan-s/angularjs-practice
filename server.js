@@ -1,54 +1,80 @@
 const express = require('express');
+const db = require('./db');
 const path = require('path');
 const port = 3000;
 
 const app = express();
-
+app.use(express.json());
 app.use('/angular', express.static(__dirname + '/node_modules/angular'));
 app.use('/angular-route', express.static(__dirname + '/node_modules/angular-route'));
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 app.use('/bootstrap-js', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
-app.use('/jquery', express.static(__dirname + 'node_modules/jquery/dist'));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist'));
+app.use(express.static('public'));
 
-
-let questions = [
-    {id: 1, Description: 'Where were the Quaid e Azam born?',options:[
-        {id:1,Description:'Karachi',Type:'radio' },
-        {id:2,Description:'Lahore',Type:'radio' },
-        {id:3,Description:'Sailkote',Type:'radio' }    
-        ]},
-    { id: 2, Description: 'Where were the Allama Iqbal born?',options:[
-        {id:1,Description:'Lahore',Type:'radio' },
-        {id:2,Description:'Karachi',Type:'radio' },
-        {id:2,Description:'Multan',Type:'radio' },
-        {id:3,Description:'Sailkote',Type:'radio'}
-        ]},
-    { id: 3, Description: 'Capital of Pakistan', options:[
-        {id:1,Description:'Multan',Type:'radio' },
-        {id:2,Description:'Sakhar',Type:'radio' },
-        {id:3,Description:'Islamabad',Type:'radio' }    
-        ]},
-    { id: 4, Description: 'WFF top fighter 2020', options:[
-            {id:1,Description:'Khabib',Type:'radio' },
-            {id:2,Description:'John Watson',Type:'radio' },
-            {id:3,Description:'Mike Pejeot',Type:'radio' }    
-        ]},
-
-    { id: 5, Description: 'Who win the boxing world championship in 2020',options:[
-        {id:1,Description:'Joshawa',Type:'radio' },
-        {id:2,Description:'Anthonoy',Type:'radio' },
-        {id:3,Description:'Mohammad Ali',Type:'radio' }    
-    ]}
-];
 app.get('/', (req,res) => {
     res.sendFile('index.html');
 });
 
+// all servey apis
+app.post('/survey', (req, res) => {
+    const survey = req.body;
+    var query = "insert into tblSurvey(Name, Description, StartDate, EndDate, IsPublic)";
+    query += `values ('${ survey.name }', '${ survey.description }', '${ survey.startDate }', '${ survey.endDate }', '${survey.isPublic ? 1 : 0}')`
+    db.ExecuteSelectQuery(query)
+    .then(data => res.status(200).send(data))
+    .catch(err => res.status(501).send(err));
+})
+
+app.post('/addquestion', (req, res) => {
+    const question = req.body;
+    var query = `declare @qid int;
+    insert into tblQuestion(Description, SurveyId) values('${question.description}', ${question.surveyId});    
+    select @qid = SCOPE_IDENTITY();
+    `;
+    question.options.forEach((option) => {
+        var subquery = `insert into tblOptions(QuestionId, Text, type) values(@qid, '${option.text}', '${option.type}');`
+        query += subquery;
+    });
+    db.insertOrUpdate(query)
+    .then(data => res.status(200).send(data))
+    .catch(err => res.status(501).send(err));
+})
 
 app.get('/questions',(req,res) => {
-    res.status(200).send(questions);
+    var query = "select * from tblQuestion where SurveyId = 1";
+
+    db.getDataSet(query).then((dsQuestions) => {
+        query = "select * from tblOptions where Questionid in (select Id from tblQuestion where SurveyId = 1)"
+
+        db.getDataSet(query).then((dsOptions) => {
+
+            dsQuestions.forEach((q) => {
+                q.options = dsOptions.filter( option => option.QuestionId === q.Id)
+            })
+            res.status(200).send(dsQuestions);
+        });    
+    });
 });
 
+app.post('/quote', (req, res) => {
+    const quote = req.body;
+    var query = '';
+    quote.forEach(q => {
+        query += `insert into tblQuote(surveyId, questionId, Response) 
+        values(${q.surveyId}, ${q.questionId}, '${q.response}')`;
+    });
+    console.log(query);
+    db.insertOrUpdate(query)
+    .then(data => res.status(200).send(data))
+    .catch(err => res.status(501).send(err));
+})
+
+app.get('/surveylist', (req,res) => {
+    var query = "select * from tblSurvey"
+    db.ExecuteSelectQuery(query)
+    .then(data => res.status(200).send(data))
+    .catch(err => res.status(501).send(err));
+});
 
 app.listen(port);

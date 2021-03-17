@@ -3,15 +3,21 @@
 
 <head>
     <title>Document</title>
+    <script src="/jquery/jquery.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
     <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="/bootstrap-js/bootstrap.min.js"></script>
     <script src="/angular/angular.js"></script>
     <script src="/angular-route/angular-route.js"></script>
-    <script src="app.js"></script>
-    <script src="about/AboutUs.js"></script>
-    <script src="home/home.js"></script>
-    <script src="takeSurvey/TakeSurveyController.js"></script>
-    <script src="createSurvey/CreateSurveyController.js"></script>
+
+    <script src="features/app/app.js"></script>
+    <script src="features/about/AboutUs.js"></script>
+    <script src="features/home/home.js"></script>
+    <script src="features/survey/surveyList/surveyList.js"></script>
+    <script src="features/survey/takeSurvey/TakeSurveyController.js"></script>
+    <script src="features/survey/createSurvey/CreateSurveyController.js"></script>
+    <script src="features/survey/addQuestion/addQuestionController.js"></script>
+    <script src="features/survey/services/surveyFactory.js"></script>
 
 </head>
 
@@ -29,10 +35,15 @@
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#!/createsurvey">Create Survey</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="#!/takesurvey">Take Survey</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                        aria-haspopup="true" aria-expanded="false">Survey</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#!/createsurvey">Create Survey</a>
+                        <a class="dropdown-item" href="#!/surveylist">Survey List</a>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#!/about">About Us</a>
