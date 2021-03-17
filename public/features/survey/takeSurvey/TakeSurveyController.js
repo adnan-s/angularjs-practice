@@ -9,19 +9,31 @@
         .then((response) => {
             $scope.questions = response.data;
             $scope.userResponse = [
-                { SurveyId: 1, QuestionId: 1, Response: ''}
+                { surveyId: 1, questionId: 1, response: ''}
             ];
         });
 
         $scope.SaveResponse = () => {
-            console.log($scope.userResponse);
+            $http({
+                method: 'POST',
+                url: 'http://localhost:3000/quote',
+                data: $scope.userResponse
+            }).then((res) => {
+                console.log(res.data);
+                $scope.question = { surveyId:1, questionId: '', response: ''}
+            }, (error) => {
+                console.log(error);
+            });
         }
 
         $scope.radioChecked = (questionId, text) => {
-            console.log(questionId, text);
-            // check if user has already responded for this question or not. 
-            // if he has then update the response in userResponse Array.
-            // if he hasn't then add the user response in array.
+            var existingResponse = $scope.userResponse.filter(e => e.questionId === questionId)[0];
+            if (existingResponse) {
+                existingResponse.response = text;
+            } else {
+                const ans = { surveyId: 1, questionId: questionId, response: text };
+                $scope.userResponse.push(ans);
+            }
         }
 
     }

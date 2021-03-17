@@ -21,7 +21,9 @@ app.post('/survey', (req, res) => {
     const survey = req.body;
     var query = "insert into tblSurvey(Name, Description, StartDate, EndDate, IsPublic)";
     query += `values ('${ survey.name }', '${ survey.description }', '${ survey.startDate }', '${ survey.endDate }', '${survey.isPublic ? 1 : 0}')`
-    db.ExecuteSelectQuery(query, res);
+    db.ExecuteSelectQuery(query)
+    .then(data => res.status(200).send(data))
+    .catch(err => res.status(501).send(err));
 })
 
 app.post('/addquestion', (req, res) => {
@@ -34,7 +36,9 @@ app.post('/addquestion', (req, res) => {
         var subquery = `insert into tblOptions(QuestionId, Text, type) values(@qid, '${option.text}', '${option.type}');`
         query += subquery;
     });
-    db.InsertOrUpdate(query, res);    
+    db.insertOrUpdate(query)
+    .then(data => res.status(200).send(data))
+    .catch(err => res.status(501).send(err));
 })
 
 app.get('/questions',(req,res) => {
@@ -53,9 +57,24 @@ app.get('/questions',(req,res) => {
     });
 });
 
+app.post('/quote', (req, res) => {
+    const quote = req.body;
+    var query = '';
+    quote.forEach(q => {
+        query += `insert into tblQuote(surveyId, questionId, Response) 
+        values(${q.surveyId}, ${q.questionId}, '${q.response}')`;
+    });
+    console.log(query);
+    db.insertOrUpdate(query)
+    .then(data => res.status(200).send(data))
+    .catch(err => res.status(501).send(err));
+})
+
 app.get('/surveylist', (req,res) => {
     var query = "select * from tblSurvey"
-    db.ExecuteSelectQuery(query, res);
+    db.ExecuteSelectQuery(query)
+    .then(data => res.status(200).send(data))
+    .catch(err => res.status(501).send(err));
 });
 
 app.listen(port);
