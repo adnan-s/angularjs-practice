@@ -1,12 +1,13 @@
 (function () {
     var mod = angular.module('SurveyQuestions');
-    mod.controller('addQuestionController', ['$scope', 'surveyFactory', '$location', addQuestion]);
+    mod.controller('addQuestionController', ['$scope', 'surveyFactory', '$routeParams', addQuestion]);
 
-    function addQuestion($scope, surveyFactory, $location) {
+    function addQuestion($scope, surveyFactory, $routeParams) {
+        const surveyId = $routeParams.id;
         $scope.title = "Add Questions";
 
         $scope.question = {
-            surveyId: 1,
+            surveyId: surveyId,
             description: '',
             options: [
 
@@ -27,7 +28,7 @@
             surveyFactory.AddQuestion.then((data) => {
                 alert('Record added successfully.');
                 $scope.question = {
-                    surveyId: 1,
+                    surveyId: surveyId,
                     description: '',
                     options: []
                 }
