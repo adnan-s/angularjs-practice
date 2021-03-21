@@ -1,6 +1,7 @@
 (function () {
 
     var mod = angular.module("SurveyQuestions");
+    mod.controller("CreateSurveyController", ["$scope", "$http", myfunction]);
 
     function myfunction($scope, $http) {
         $scope.title = "Create New Survey";
@@ -23,6 +24,5 @@
         }
     }
 
-    mod.controller("CreateSurveyController", ["$scope", "$http", myfunction]);
 
 }());

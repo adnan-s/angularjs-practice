@@ -18,6 +18,8 @@
     <script src="features/survey/createSurvey/CreateSurveyController.js"></script>
     <script src="features/survey/addQuestion/addQuestionController.js"></script>
     <script src="features/survey/services/surveyFactory.js"></script>
+    <script src="features/faq/list/faqListController.js"></script>
+    <script src="features/faq/services/faqFactory.js"></script>
 
 </head>
 
@@ -48,6 +50,15 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#!/about">About Us</a>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                        aria-haspopup="true" aria-expanded="false">FAQ</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#!/faq">Create FAQ</a>
+                        <a class="dropdown-item" href="#!/faqlist">FAQ List</a>
+                    </div>
+                </li>
+
             </ul>
         </div>
     </nav>

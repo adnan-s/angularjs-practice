@@ -71,10 +71,23 @@ app.post('/quote', (req, res) => {
 })
 
 app.get('/surveylist', (req,res) => {
-    var query = "select * from tblSurvey"
+    var query = "select * from tblSurvey";
+    console.log(query);
     db.ExecuteSelectQuery(query)
     .then(data => res.status(200).send(data))
     .catch(err => res.status(501).send(err));
 });
+
+// here you would create FAQ api.
+app.get('/faqlist', (req,res) => {
+    var query = "select * from tblFAQ"
+    db.ExecuteSelectQuery(query)
+    .then(data => res.status(200).send(data))
+    .catch(err => res.status(501).send(err));
+})
+
+app.post('/addfaq', (req, res) => {
+    // here you need to insert faq record.
+})
 
 app.listen(port);

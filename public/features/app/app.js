@@ -29,6 +29,11 @@
                 templateUrl: 'features/about/about.html',
                 controller: 'AboutUs'
             })
+            .when('/faqlist', {
+                templateUrl: 'features/faq/list/faqList.html',
+                controller: 'faqListController'
+                
+            })
             .otherwise({ redirectTo: '/' })
     });
 

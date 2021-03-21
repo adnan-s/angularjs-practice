@@ -1,0 +1,22 @@
+<div>
+    <h3>
+        {{ title }}
+    </h3>
+</div>
+<div>
+    <table class="table table-striped table-hover">
+        <thead class="table-header">
+            <tr>
+                <th>FAQ</th>
+                <th>Answer</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="x in faqlist">
+                <td>{{x.faq}}</td>
+                <td>{{x.answer}}</td>
+                <td><input type="button" value="Edit" ng-click="onEditFaq(x.Id)" class="btn btn-sm btn-primary"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
