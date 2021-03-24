@@ -13,7 +13,7 @@
         $scope.onSaveClick = () => {
             $http({
                 method: 'POST',
-                url: 'http://localhost:3000/survey',
+                url: 'http://localhost:8080/survey',
                 data: $scope.survey
             })
             .then((response) => {

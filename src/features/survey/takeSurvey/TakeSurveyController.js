@@ -5,7 +5,7 @@
 
     function myfunction($scope, $http) {
 
-        $http.get('http://localhost:3000/questions')
+        $http.get('http://localhost:8080/questions')
         .then((response) => {
             $scope.questions = response.data;
             $scope.userResponse = [
@@ -16,7 +16,7 @@
         $scope.SaveResponse = () => {
             $http({
                 method: 'POST',
-                url: 'http://localhost:3000/quote',
+                url: 'http://localhost:8080/quote',
                 data: $scope.userResponse
             }).then((res) => {
                 console.log(res.data);

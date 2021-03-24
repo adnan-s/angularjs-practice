@@ -1,14 +1,14 @@
-(function(){
+(function () {
 
     var mod = angular.module('SurveyQuestions');
-    mod.factory("faqFactory",['$http', faqFactory]);
+    mod.factory("faqFactory", ['$http', faqFactory]);
 
-    function faqFactory($http){
+    function faqFactory($http) {
 
         function _AddFaq(question) {
             return $http({
                 method: 'POST',
-                url: 'http://localhost:3000/addFaq',
+                url: 'http://localhost:8080/Faq',
                 data: question
             }).then((res) => {
                 return 'Success';
@@ -17,14 +17,14 @@
             });
         }
 
-        function _getAll(){
-            return $http.get('http://localhost:3000/faqlist')
-            .then((res) => {
-                return res.data;
-            })
-            .catch((err) => {
-                return err;
-            });
+        function _getAll() {
+            return $http.get('http://localhost:8080/faqlist')
+                .then((res) => {
+                    return res.data;
+                })
+                .catch((err) => {
+                    return err;
+                });
         }
 
         return {

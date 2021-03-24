@@ -32,8 +32,16 @@
             .when('/faqlist', {
                 templateUrl: 'features/faq/list/faqList.html',
                 controller: 'faqListController'
-                
             })
+            .when('/faq/:id', {
+                templateUrl: 'features/faq/create/faq.html',
+                controller: 'faqController'
+            })
+            .when('/faq', {
+                templateUrl: 'features/faq/create/faq.html',
+                controller: 'faqController'
+            })
+
             .otherwise({ redirectTo: '/' })
     });
 
