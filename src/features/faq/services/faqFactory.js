@@ -5,11 +5,23 @@
 
     function faqFactory($http) {
 
-        function _AddFaq(question) {
+        function _insert(faq) {
             return $http({
                 method: 'POST',
                 url: 'http://localhost:8080/Faq',
-                data: question
+                data: faq
+            }).then((res) => {
+                return 'Success';
+            }, (error) => {
+                return (error);
+            });
+        }
+
+        function _update(faq) {
+            return $http({
+                method: 'PUT',
+                url: 'http://localhost:8080/faq',
+                data: faq
             }).then((res) => {
                 return 'Success';
             }, (error) => {
@@ -27,9 +39,30 @@
                 });
         }
 
+        function _delete(id) {
+            return $http.delete('http://localhost:8080/faq/' + id)
+            .then((data) => {
+                return data;
+            }).catch((err) => {
+                return err;
+            })
+        }
+
+        function _getSingle(id) {
+            return $http.get('http://localhost:8080/faq/' + id)
+            .then((data) => {
+                return data;
+            }).catch((err) => {
+                return err;
+            })
+        }
+
         return {
-            AddFaq: _AddFaq,
-            getAll: _getAll
+            Insert: _insert,
+            Update: _update,
+            GetAll: _getAll,
+            Delete: _delete,
+            GetSingle: _getSingle
         }
     }
 }());

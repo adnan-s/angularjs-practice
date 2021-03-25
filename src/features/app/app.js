@@ -25,21 +25,17 @@
                 templateUrl: 'features/survey/addQuestion/addQuestion.html',
                 controller: 'addQuestionController'
             })
-            .when('/about', {
-                templateUrl: 'features/about/about.html',
-                controller: 'AboutUs'
-            })
             .when('/faqlist', {
                 templateUrl: 'features/faq/list/faqList.html',
                 controller: 'faqListController'
             })
             .when('/faq/:id', {
                 templateUrl: 'features/faq/create/faq.html',
-                controller: 'faqController'
+                controller: 'faqCreateController'
             })
             .when('/faq', {
                 templateUrl: 'features/faq/create/faq.html',
-                controller: 'faqController'
+                controller: 'faqCreateController'
             })
 
             .otherwise({ redirectTo: '/' })

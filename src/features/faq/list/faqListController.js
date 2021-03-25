@@ -1,21 +1,42 @@
 (function () {
-    var mod = angular.module("SurveyQuestions");
-    mod.controller("faqListController", ["$scope","faqFactory","$location", faqListCtrl]);
 
-    function faqListCtrl($scope, faqFactory, $location) {
+    var mod = angular.module("SurveyQuestions");
+    mod.controller("faqListController", ["$scope", "$location", "faqFactory", faqListCtrl]);
+
+    function faqListCtrl($scope, $location, faqFactory) {
 
         $scope.title = "FAQ List";
 
-        faqFactory.getAll()
-        .then((data) => {
-            $scope.faqlist = data;
-            $scope.userResponse = [];
-        });
+        const loadFaq = () => {
+            faqFactory.GetAll()
+            .then((data) => {
+                $scope.faqlist = data;
+                $scope.userResponse = [];
+            });
+        }
+
+        loadFaq();
 
         $scope.onEditFaq = (Id) => {
             $location.path('/faq/' + Id);
+            faqFactory.GetSingle()
+            .then((data) => {
+                $scope.faq = data;
+                console.log(data);
+            });
+        }
+
+        $scope.onDeleteFaq = (Id) => {
+            if(confirm("Are you sure you wand to delete this question")) {
+                faqFactory.Delete(Id)
+                .then((data) => {
+                    alert(data.data);
+                    loadFaq();
+                });
+            }
         }
     }
+
 }());
 
 
