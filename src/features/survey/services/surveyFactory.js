@@ -1,4 +1,4 @@
-(function(){
+(function () {
 
     var mod = angular.module('SurveyQuestions');
     mod.factory("surveyFactory", ["$http", surveyFactory]);
@@ -8,7 +8,7 @@
         function _AddQuestion(question) {
             return $http({
                 method: 'POST',
-                url: 'http://localhost:3000/addquestion',
+                url: 'http://localhost:8080/addquestion',
                 data: question
             }).then((res) => {
                 return 'Success';
@@ -18,13 +18,13 @@
         }
 
         function _surveyList() {
-            return $http.get('http://localhost:3000/surveylist')
-            .then((res) => {
-                return res.data;
-            })
-            .catch((err) => {
-                return err;
-            });
+            return $http.get('http://localhost:8080/surveylist')
+                .then((res) => {
+                    return res.data;
+                })
+                .catch((err) => {
+                    return err;
+                });
         }
 
 
