@@ -9,6 +9,14 @@
                 templateUrl: 'features/home/home.html',
                 controller: 'homeController'
             })
+            .when('/register', {
+                templateUrl: 'features/users/register/RegisterController.html',
+                controller: 'RegisterController'
+            })
+            .when('/userlist', {
+                templateUrl: 'features/users/list/userListController.html',
+                controller: 'userLIstController'
+            })
             .when('/createsurvey', {
                 templateUrl: 'features/survey/createSurvey/CreateSurvey.html',
                 controller: 'CreateSurveyController'

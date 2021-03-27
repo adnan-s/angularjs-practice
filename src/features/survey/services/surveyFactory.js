@@ -8,7 +8,7 @@
         function _AddQuestion(question) {
             return $http({
                 method: 'POST',
-                url: 'http://localhost:8080/addquestion',
+                url: 'http://localhost:8080/question',
                 data: question
             }).then((res) => {
                 return 'Success';
@@ -18,7 +18,7 @@
         }
 
         function _surveyList() {
-            return $http.get('http://localhost:8080/surveylist')
+            return $http.get('http://localhost:8080/survey')
                 .then((res) => {
                     return res.data;
                 })
