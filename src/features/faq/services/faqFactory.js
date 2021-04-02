@@ -4,11 +4,12 @@
     mod.factory("faqFactory", ['$http', faqFactory]);
 
     function faqFactory($http) {
+        const apiUrl = 'http://api.surveyportal.com:81'
 
         function _insert(faq) {
             return $http({
                 method: 'POST',
-                url: 'http://localhost:8080/Faq',
+                url: `${apiUrl}/faq`,
                 data: faq
             }).then((res) => {
                 return 'Success';
@@ -20,7 +21,7 @@
         function _update(faq) {
             return $http({
                 method: 'PUT',
-                url: 'http://localhost:8080/faq',
+                url: `${apiUrl}/faq`,
                 data: faq
             }).then((res) => {
                 return 'Success';
@@ -30,7 +31,7 @@
         }
 
         function _getAll() {
-            return $http.get('http://localhost:8080/faqlist')
+            return $http.get(`${apiUrl}/faq`)
                 .then((res) => {
                     return res.data;
                 })
@@ -40,7 +41,7 @@
         }
 
         function _delete(id) {
-            return $http.delete('http://localhost:8080/faq/' + id)
+            return $http.delete(`${apiUrl}/faq/${id}`)
             .then((data) => {
                 return data;
             }).catch((err) => {
@@ -49,7 +50,7 @@
         }
 
         function _getSingle(id) {
-            return $http.get('http://localhost:8080/faq/' + id)
+            return $http.get(`${apiUrl}/faq/${id}`)
             .then((data) => {
                 return data;
             }).catch((err) => {

@@ -1,15 +1,16 @@
 (function () {
 
     var mod = angular.module("SurveyQuestions");
-    mod.controller("TakeSurveyController", ["$scope", "$http", myfunction]);
+    mod.controller("TakeSurveyController", ["$scope", "$http", "$routeParams", myfunction]);
 
-    function myfunction($scope, $http) {
+    function myfunction($scope, $http, $routeParams) {
 
-        $http.get('http://localhost:8080/questions')
+        const surveyId = $routeParams.surveyId;
+        $http.get('http://localhost:8080/question/' + surveyId)
         .then((response) => {
             $scope.questions = response.data;
             $scope.userResponse = [
-                { surveyId: 1, questionId: 1, response: ''}
+                { surveyId: surveyId, questionId: 1, response: ''}
             ];
         });
 
@@ -31,7 +32,7 @@
             if (existingResponse) {
                 existingResponse.response = text;
             } else {
-                const ans = { surveyId: 1, questionId: questionId, response: text };
+                const ans = { surveyId: surveyId, questionId: questionId, response: text };
                 $scope.userResponse.push(ans);
             }
         }

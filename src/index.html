@@ -12,17 +12,29 @@
 
     <script src="features/app/app.js"></script>
     <script src="features/home/home.js"></script>
+
+    <script src="features/survey/services/surveyFactory.js"></script>
     <script src="features/survey/surveyList/surveyList.js"></script>
     <script src="features/survey/takeSurvey/TakeSurveyController.js"></script>
     <script src="features/survey/createSurvey/CreateSurveyController.js"></script>
     <script src="features/survey/addQuestion/addQuestionController.js"></script>
-    <script src="features/survey/services/surveyFactory.js"></script>
-    <script src="features/faq/list/faqListController.js"></script>
+    <script src="features/survey/surveyBoard/surveyBoardController.js"></script>
+
     <script src="features/faq/services/faqFactory.js"></script>
+    <script src="features/faq/list/faqListController.js"></script>
     <script src="features/faq/create/faqCreateController.js"></script>
+    <script src="features/faq/display/faqDisplayController.js"></script>
+
+    <script src="features/users/services/UserFactory.js"></script>
     <script src="features/users/register/RegisterController.js"></script>
     <script src="features/users/list/userListController.js"></script>
-    <script src="features/users/services/UserFactory.js"></script>
+
+    <script src="features/support/services/supportFactory.js"></script>
+    <script src="features/support/manageSupport/manageSupportController.js"></script>
+    <script src="features/support/supportInfo/supportInfoController.js"></script>
+    <script src="features/support/display/supportDisplayController.js"></script>
+
+    
 </head>
 
 <body>
@@ -39,24 +51,16 @@
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#!/takesurvey">Take Survey</a>
+                    <a class="nav-link" href="#!/surveyboard">Survey Board</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                        aria-haspopup="true" aria-expanded="false">Survey</a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#!/createsurvey">Create Survey</a>
-                        <a class="dropdown-item" href="#!/surveylist">Survey List</a>
-                    </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="#!/support">Support</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                        aria-haspopup="true" aria-expanded="false">FAQ</a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#!/faq">Create FAQ</a>
-                        <a class="dropdown-item" href="#!/faqlist">FAQ List</a>
-                    </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="#!/faqdisplay">FAQs</a>
                 </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
                         aria-haspopup="true" aria-expanded="false">Admin</a>
@@ -64,10 +68,9 @@
                         <a class="dropdown-item" href="#!/userlist">Manage Users</a>
                         <a class="dropdown-item" href="#!/faqlist">Manage FAQ</a>
                         <a class="dropdown-item" href="#!/surveylist">Manage Survey</a>
+                        <a class="dropdown-item" href="#!/supportlist">Manage Support</a>
                     </div>
                 </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
                 <li class="nav-item">
                     <a href="#!/login" class="nav-link">Login</a>
                 </li>

@@ -15,19 +15,23 @@
             })
             .when('/userlist', {
                 templateUrl: 'features/users/list/userListController.html',
-                controller: 'userLIstController'
+                controller: 'userListController'
             })
             .when('/createsurvey', {
                 templateUrl: 'features/survey/createSurvey/CreateSurvey.html',
                 controller: 'CreateSurveyController'
             })
-            .when('/takesurvey', {
+            .when('/takesurvey/:surveyId', {
                 templateUrl: 'features/survey/takeSurvey/takesurvey.html',
                 controller: 'TakeSurveyController'
             })
             .when('/surveylist', {
                 templateUrl: 'features/survey/surveyList/surveyList.html',
                 controller: 'surveyListController'
+            })
+            .when('/surveyboard', {
+                templateUrl: 'features/survey/surveyBoard/surveyBoardController.html',
+                controller: 'surveyBoardController'
             })
             .when('/addquestion/:id', {
                 templateUrl: 'features/survey/addQuestion/addQuestion.html',
@@ -45,6 +49,27 @@
                 templateUrl: 'features/faq/create/faq.html',
                 controller: 'faqCreateController'
             })
+            .when('/faqdisplay', {
+                templateUrl: 'features/faq/display/faqDisplay.html',
+                controller: 'faqDisplayController'
+            })
+            .when('/support', {
+                templateUrl: 'features/support/display/supportDisplayController.html',
+                controller: 'supportDisplayController'
+            })            
+            .when('/supportlist', {
+                templateUrl: 'features/support/manageSupport/manageSupportController.html',
+                controller: 'manageSupportController'
+            })            
+            .when('/supportinfo', {
+                templateUrl: 'features/support/supportInfo/supportInfoController.html',
+                controller: 'supportInfoController'
+            })            
+            .when('/supportinfo/:id', {
+                templateUrl: 'features/support/supportInfo/supportInfoController.html',
+                controller: 'supportInfoController'
+            })            
+
 
             .otherwise({ redirectTo: '/' })
     });

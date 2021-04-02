@@ -1,13 +1,17 @@
-(function (){
+(function () {
     const mod = angular.module("SurveyQuestions");
-    mod.controller("userLIstController", ['$scope', 'userFactory', userListController ]);
+    mod.controller("userListController", ['$scope', 'userFactory', userListController]);
 
-    function userListController($scope, userFactory){
-        $scope.title = "Users list";
+    function userListController($scope, userFactory) {
+
+        $scope.title = "Manage Users";
 
         userFactory.getAll()
-        .then((data) => {
-            $scope.users = data;
-        })
+            .then((data) => {
+                $scope.users = data;
+            }, (err) => {
+                console.log(err);
+            })
+
     }
 }());
