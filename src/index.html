@@ -3,30 +3,21 @@
 
 <head>
     <title>Document</title>
-    <script src="/jquery/jquery.js"></script>
     <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
-    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="/bootstrap-js/bootstrap.min.js"></script>
-    <script src="/angular/angular.js"></script>
-    <script src="/angular-route/angular-route.js"></script>
+    <script src="/dist/vendors/jquery.js"></script>
+    <link href="/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="/dist/vendors/bootstrap.min.js"></script>
+    <script src="/dist/vendors/angular.js"></script>
+    <script src="/dist/vendors/angular-route.js"></script>
 
-    <script src="features/app/app.js"></script>
-    <script src="features/home/home.js"></script>
-    <script src="features/survey/surveyList/surveyList.js"></script>
-    <script src="features/survey/takeSurvey/TakeSurveyController.js"></script>
-    <script src="features/survey/createSurvey/CreateSurveyController.js"></script>
-    <script src="features/survey/addQuestion/addQuestionController.js"></script>
-    <script src="features/survey/services/surveyFactory.js"></script>
-    <script src="features/faq/list/faqListController.js"></script>
-    <script src="features/faq/services/faqFactory.js"></script>
-    <script src="features/faq/create/faqCreateController.js"></script>
-
+    <script src="dist/js/bundle.js"></script>
+    
 </head>
 
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Survey Questionnaire</a>
+        <a class="navbar-brand" href="#">Survey Portal</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
             aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -37,25 +28,32 @@
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#!/takesurvey">Take Survey</a>
+                    <a class="nav-link" href="/surveyboard">Survey Board</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/support">Support</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/faqdisplay">FAQs</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                        aria-haspopup="true" aria-expanded="false">Survey</a>
+                        aria-haspopup="true" aria-expanded="false">Admin</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#!/createsurvey">Create Survey</a>
-                        <a class="dropdown-item" href="#!/surveylist">Survey List</a>
+                        <a class="dropdown-item" href="/userlist">Manage Users</a>
+                        <a class="dropdown-item" href="/faqlist">Manage FAQ</a>
+                        <a class="dropdown-item" href="/surveylist">Manage Survey</a>
+                        <a class="dropdown-item" href="/supportlist">Manage Support</a>
                     </div>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                        aria-haspopup="true" aria-expanded="false">FAQ</a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#!/faq">Create FAQ</a>
-                        <a class="dropdown-item" href="#!/faqlist">FAQ List</a>
-                    </div>
+                <li class="nav-item">
+                    <a href="/login" class="nav-link">Login</a>
                 </li>
-
+                <li class="nav-item">
+                    <a href="/register" class="nav-link">Register</a>
+                </li>
             </ul>
         </div>
     </nav>

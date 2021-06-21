@@ -1,0 +1,29 @@
+<div>
+    <h3>
+        {{ title }}
+    </h3>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <td>Name</td>
+            <td>Email</td>
+            <td>Active</td>
+            <td>Activate</td>
+            <td>Reset Password</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="user in users">
+            <td>{{ user.firstName + " " + user.lastName }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.active ? 'Yes' : 'No' }}</td>
+            <td>
+                <button class="btn btn-sm btn-primary" ng-click="onActive(user.userId)">Active</button>
+            </td>
+            <td>
+                <button class="btn btn-sm btn-primary" ng-click="onResetPassword(user.userId)">Reset Password</button>
+            </td>
+        </tr>        
+    </tbody>
+</table>

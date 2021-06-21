@@ -1,0 +1,32 @@
+<div>
+    <h1>
+        {{title}}
+    </h1>
+</div>
+
+<div ng-repeat="support in supportList">
+    <div class="card border-dark mb-3">
+        <div class="card-header">{{ support.Contact }}</div>
+        <div class="card-body text-dark">
+            <h5 class="card-title">{{ support.ShortDesc }}</h5>
+            <p class="card-text">
+                Description: {{ support.Description }}
+            </p>
+            <p class="card-text">
+                Email: {{ support.Email }}
+            </p>
+            <p class="card-text">
+                Phone: {{ support.Phone }}
+            </p>
+            <p class="card-text">
+                WhatsApp: {{ support.WhatsApp }}
+            </p>
+            <p class="card-text">
+                SkypeId: {{ support.SkypeId }}
+            </p>
+            <p class="card-text">
+                Website: {{ support.WebAddress }}
+            </p>
+        </div>
+    </div>
+</div>

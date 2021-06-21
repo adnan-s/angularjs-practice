@@ -1,0 +1,28 @@
+<div>
+    <h3>
+        {{ title }}
+    </h3>
+</div>
+<div>
+    <a href="#!/supportinfo">Create New</a>
+</div>
+<div>
+    <table class="table table-striped table-hover">
+        <thead class="table-header">
+            <tr>
+                <th>Contact</th>
+                <th>ShortDesc</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="x in supportlist">
+                <td>{{ x.Contact }}</td>
+                <td>{{ x.Description }}</td>
+                <td><input type="button" value="Edit" ng-click="onEditSupportClick(x.Id)" class="btn btn-sm btn-primary"></td>
+                <td><input type="button" value="Delete" ng-click="onDeleteSupportClick(x.Id)" class="btn btn-sm btn-primary"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

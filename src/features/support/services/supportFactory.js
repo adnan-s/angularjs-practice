@@ -1,13 +1,13 @@
 var mod = angular.module('SurveyQuestions');
-mod.factory("surveyFactory", ["$http",
-    function ($http) {
+mod.factory("supportFactory", ["$http",
+    function supportFactory($http) {
         const apiUrl = 'http://api.surveyportal.com:81'
 
-        function _AddQuestion(question) {
+        function _insert(support) {
             return $http({
                 method: 'POST',
-                url: `${apiUrl}/addquestion`,
-                data: question
+                url: `${apiUrl}/support`,
+                data: support
             }).then((res) => {
                 return 'Success';
             }, (error) => {
@@ -15,8 +15,8 @@ mod.factory("surveyFactory", ["$http",
             });
         }
 
-        function _surveyList() {
-            return $http.get(`${apiUrl}/survey`)
+        function _getAll() {
+            return $http.get(`${apiUrl}/support`)
                 .then((res) => {
                     return res.data;
                 })
@@ -24,9 +24,10 @@ mod.factory("surveyFactory", ["$http",
                     return err;
                 });
         }
+
         return {
-            AddQuestion: _AddQuestion,
-            getAll: _surveyList
+            Insert: _insert,
+            getAll: _getAll
         }
 
     }

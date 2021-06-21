@@ -1,17 +1,15 @@
-(function () {
+var mod = angular.module("SurveyQuestions");
+mod.controller("TakeSurveyController", ["$scope", "$http", "$routeParams",
+    function ($scope, $http, $routeParams) {
 
-    var mod = angular.module("SurveyQuestions");
-    mod.controller("TakeSurveyController", ["$scope", "$http", myfunction]);
-
-    function myfunction($scope, $http) {
-
-        $http.get('http://localhost:8080/questions')
-        .then((response) => {
-            $scope.questions = response.data;
-            $scope.userResponse = [
-                { surveyId: 1, questionId: 1, response: ''}
-            ];
-        });
+        const surveyId = $routeParams.surveyId;
+        $http.get('http://localhost:8080/question/' + surveyId)
+            .then((response) => {
+                $scope.questions = response.data;
+                $scope.userResponse = [
+                    { surveyId: surveyId, questionId: 1, response: '' }
+                ];
+            });
 
         $scope.SaveResponse = () => {
             $http({
@@ -20,7 +18,7 @@
                 data: $scope.userResponse
             }).then((res) => {
                 console.log(res.data);
-                $scope.question = { surveyId:1, questionId: '', response: ''}
+                $scope.question = { surveyId: 1, questionId: '', response: '' }
             }, (error) => {
                 console.log(error);
             });
@@ -31,12 +29,11 @@
             if (existingResponse) {
                 existingResponse.response = text;
             } else {
-                const ans = { surveyId: 1, questionId: questionId, response: text };
+                const ans = { surveyId: surveyId, questionId: questionId, response: text };
                 $scope.userResponse.push(ans);
             }
         }
 
     }
+]);
 
-
-}());

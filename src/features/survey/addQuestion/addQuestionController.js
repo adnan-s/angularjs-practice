@@ -1,8 +1,8 @@
-(function () {
-    var mod = angular.module('SurveyQuestions');
-    mod.controller('addQuestionController', ['$scope', 'surveyFactory', '$routeParams', addQuestion]);
-
-    function addQuestion($scope, surveyFactory, $routeParams) {
+var mod = angular.module('SurveyQuestions');
+mod.controller('addQuestionController', ['$scope',
+    'surveyFactory',
+    '$routeParams',
+    function ($scope, surveyFactory, $routeParams) {
         const surveyId = $routeParams.id;
         $scope.title = "Add Questions";
 
@@ -38,6 +38,5 @@
         }
 
     }
+]);
 
-
-}());
