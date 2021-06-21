@@ -1,8 +1,6 @@
-(function () {
-    var mod = angular.module("SurveyQuestions")
-    mod.controller("RegisterController", ["$scope", "userFactory", usrCreateController]);
-
-    function usrCreateController($scope, userFactory) {
+var mod = angular.module("SurveyQuestions")
+mod.controller("RegisterController", ["$scope", "userFactory",
+    function ($scope, userFactory) {
         $scope.title = "Create account.";
         const initUser = () => {
             $scope.user = {
@@ -27,4 +25,4 @@
         }
 
     }
-}())
+]);

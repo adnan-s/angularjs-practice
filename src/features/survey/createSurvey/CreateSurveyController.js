@@ -1,9 +1,6 @@
-(function () {
-
-    var mod = angular.module("SurveyQuestions");
-    mod.controller("CreateSurveyController", ["$scope", "$http", myfunction]);
-
-    function myfunction($scope, $http) {
+var mod = angular.module("SurveyQuestions");
+mod.controller("CreateSurveyController", ["$scope", "$http",
+    function ($scope, $http) {
         $scope.title = "Create New Survey";
 
         $scope.survey = {
@@ -16,13 +13,12 @@
                 url: 'http://localhost:8080/survey',
                 data: $scope.survey
             })
-            .then((response) => {
-                console.log('success');
-            }, (error) => {
-                console.log(error);
-            });
+                .then((response) => {
+                    console.log('success');
+                }, (error) => {
+                    console.log(error);
+                });
         }
     }
+]);
 
-
-}());

@@ -1,9 +1,6 @@
-(function () {
-
-    var mod = angular.module('SurveyQuestions');
-    mod.factory("surveyFactory", ["$http", surveyFactory]);
-
-    function surveyFactory($http) {
+var mod = angular.module('SurveyQuestions');
+mod.factory("surveyFactory", ["$http",
+    function ($http) {
         const apiUrl = 'http://api.surveyportal.com:81'
 
         function _AddQuestion(question) {
@@ -33,6 +30,5 @@
         }
 
     }
+]);
 
-
-}())

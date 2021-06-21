@@ -1,9 +1,6 @@
-(function () {
-
-    var mod = angular.module('SurveyQuestions');
-    mod.factory("faqFactory", ['$http', faqFactory]);
-
-    function faqFactory($http) {
+var mod = angular.module('SurveyQuestions');
+mod.factory("faqFactory", ['$http',
+    function ($http) {
         const apiUrl = 'http://api.surveyportal.com:81'
 
         function _insert(faq) {
@@ -42,20 +39,20 @@
 
         function _delete(id) {
             return $http.delete(`${apiUrl}/faq/${id}`)
-            .then((data) => {
-                return data;
-            }).catch((err) => {
-                return err;
-            })
+                .then((data) => {
+                    return data;
+                }).catch((err) => {
+                    return err;
+                })
         }
 
         function _getSingle(id) {
             return $http.get(`${apiUrl}/faq/${id}`)
-            .then((data) => {
-                return data;
-            }).catch((err) => {
-                return err;
-            })
+                .then((data) => {
+                    return data;
+                }).catch((err) => {
+                    return err;
+                })
         }
 
         return {
@@ -66,4 +63,5 @@
             GetSingle: _getSingle
         }
     }
-}());
+]);
+

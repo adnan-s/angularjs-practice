@@ -1,17 +1,12 @@
-(function () {
-
-    var mod = angular.module('SurveyQuestions');
-    mod.controller("supportDisplayController", ["$scope", "supportFactory", supportDisplay]);
-
-    function supportDisplay($scope, supportFactory) {
+var mod = angular.module('SurveyQuestions');
+mod.controller("supportDisplayController", ["$scope", "supportFactory",
+    function ($scope, supportFactory) {
 
         $scope.title = "Support List";
 
         supportFactory.getAll()
-        .then((data) => {
-            console.log('here');
-            $scope.supportList = data;
-        })
+            .then((data) => {
+                $scope.supportList = data;
+            })
     }
-
-}());
+]);

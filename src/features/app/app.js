@@ -3,7 +3,12 @@
     // this will initialize an angular application with the name SurveyQuestions
     var app = angular.module("SurveyQuestions", ["ngRoute"]);
 
-    app.config(($routeProvider) => {
+    app.config(($routeProvider, $locationProvider) => {
+
+        $locationProvider.html5Mode({
+            enabled: true
+        });
+
         $routeProvider
             .when('/', {
                 templateUrl: 'features/home/home.html',

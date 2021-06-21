@@ -1,8 +1,6 @@
-(function () {
     var mod = angular.module('SurveyQuestions');
-    mod.factory("userFactory", ["$http", userFactory]);
-
-    function userFactory($http) {
+    mod.factory("userFactory", ["$http", 
+    function ($http) {
         const apiUrl = 'http://api.surveyportal.com:81'
 
         function _insert(user) {
@@ -20,15 +18,13 @@
         }
 
         function _getAll() {
-            return new Promise((resolve, reject) => {
-                $http.get(`${apiUrl}/user`)
-                    .then((res) => {
-                        resolve(res.data);
-                    })
-                    .catch((err) => {
-                        reject(err);
-                    });
-            })
+            return $http.get(`${apiUrl}/user`)
+                .then((res) => {
+                    return res.data;
+                })
+                .catch((err) => {
+                    return err;
+                });
         }
 
         function _update(user) {
@@ -51,5 +47,4 @@
             getAll: _getAll
         }
     }
-
-}());
+]);

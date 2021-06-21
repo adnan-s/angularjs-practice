@@ -1,8 +1,9 @@
-(function () {
-    var mod = angular.module("SurveyQuestions")
-    mod.controller("faqCreateController", ["$scope", "$routeParams", "$location", "faqFactory", faqCreateController]);
-
-    function faqCreateController($scope, $routeParams, $location, faqFactory) {
+var mod = angular.module("SurveyQuestions")
+mod.controller("faqCreateController", ["$scope",
+    "$routeParams",
+    "$location",
+    "faqFactory",
+    function ($scope, $routeParams, $location, faqFactory) {
         $scope.title = "Add FAQ (Frequently Asked Questions)";
         const faqId = $routeParams.id ? $routeParams.id : 0;
 
@@ -16,8 +17,6 @@
                 faq: '', answer: ''
             }
         }
-
-
 
         $scope.onSaveClick = () => {
             faqFactory.Insert($scope.faq)
@@ -39,4 +38,4 @@
                 });
         }
     }
-}());
+]);

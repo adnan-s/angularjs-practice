@@ -3,37 +3,14 @@
 
 <head>
     <title>Document</title>
-    <script src="/jquery/jquery.js"></script>
     <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
-    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="/bootstrap-js/bootstrap.min.js"></script>
-    <script src="/angular/angular.js"></script>
-    <script src="/angular-route/angular-route.js"></script>
+    <script src="/dist/vendors/jquery.js"></script>
+    <link href="/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="/dist/vendors/bootstrap.min.js"></script>
+    <script src="/dist/vendors/angular.js"></script>
+    <script src="/dist/vendors/angular-route.js"></script>
 
-    <script src="features/app/app.js"></script>
-    <script src="features/home/home.js"></script>
-
-    <script src="features/survey/services/surveyFactory.js"></script>
-    <script src="features/survey/surveyList/surveyList.js"></script>
-    <script src="features/survey/takeSurvey/TakeSurveyController.js"></script>
-    <script src="features/survey/createSurvey/CreateSurveyController.js"></script>
-    <script src="features/survey/addQuestion/addQuestionController.js"></script>
-    <script src="features/survey/surveyBoard/surveyBoardController.js"></script>
-
-    <script src="features/faq/services/faqFactory.js"></script>
-    <script src="features/faq/list/faqListController.js"></script>
-    <script src="features/faq/create/faqCreateController.js"></script>
-    <script src="features/faq/display/faqDisplayController.js"></script>
-
-    <script src="features/users/services/UserFactory.js"></script>
-    <script src="features/users/register/RegisterController.js"></script>
-    <script src="features/users/list/userListController.js"></script>
-
-    <script src="features/support/services/supportFactory.js"></script>
-    <script src="features/support/manageSupport/manageSupportController.js"></script>
-    <script src="features/support/supportInfo/supportInfoController.js"></script>
-    <script src="features/support/display/supportDisplayController.js"></script>
-
+    <script src="dist/js/bundle.js"></script>
     
 </head>
 
@@ -51,13 +28,13 @@
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#!/surveyboard">Survey Board</a>
+                    <a class="nav-link" href="/surveyboard">Survey Board</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#!/support">Support</a>
+                    <a class="nav-link" href="/support">Support</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#!/faqdisplay">FAQs</a>
+                    <a class="nav-link" href="/faqdisplay">FAQs</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -65,17 +42,17 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
                         aria-haspopup="true" aria-expanded="false">Admin</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#!/userlist">Manage Users</a>
-                        <a class="dropdown-item" href="#!/faqlist">Manage FAQ</a>
-                        <a class="dropdown-item" href="#!/surveylist">Manage Survey</a>
-                        <a class="dropdown-item" href="#!/supportlist">Manage Support</a>
+                        <a class="dropdown-item" href="/userlist">Manage Users</a>
+                        <a class="dropdown-item" href="/faqlist">Manage FAQ</a>
+                        <a class="dropdown-item" href="/surveylist">Manage Survey</a>
+                        <a class="dropdown-item" href="/supportlist">Manage Support</a>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a href="#!/login" class="nav-link">Login</a>
+                    <a href="/login" class="nav-link">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#!/register" class="nav-link">Register</a>
+                    <a href="/register" class="nav-link">Register</a>
                 </li>
             </ul>
         </div>

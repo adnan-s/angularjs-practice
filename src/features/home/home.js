@@ -1,11 +1,5 @@
-(function () {
+var mod = angular.module("SurveyQuestions");
+mod.controller("homeController", ["$scope", function ($scope) {
+    $scope.message = "Message from home controller.";
+}]);
 
-    var mod = angular.module("SurveyQuestions");
-
-    function home($scope) {
-        $scope.message = "Message from home controller.";
-    }
-
-    mod.controller("homeController", ["$scope", home]);
-
-}());

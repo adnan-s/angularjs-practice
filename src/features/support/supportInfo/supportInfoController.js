@@ -1,9 +1,6 @@
-(function () {
-
-    var mod = angular.module('SurveyQuestions');
-    mod.controller("supportInfoController", ["$scope", "supportFactory", supportInfo]);
-
-    function supportInfo($scope, supportFactory) {
+var mod = angular.module('SurveyQuestions');
+mod.controller("supportInfoController", ["$scope", "supportFactory",
+    function ($scope, supportFactory) {
 
         $scope.title = "Create Support Info";
 
@@ -26,5 +23,4 @@
                 });
         }
     }
-    
-}());
+]);

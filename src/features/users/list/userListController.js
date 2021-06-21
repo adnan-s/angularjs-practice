@@ -1,8 +1,6 @@
-(function () {
-    const mod = angular.module("SurveyQuestions");
-    mod.controller("userListController", ['$scope', 'userFactory', userListController]);
-
-    function userListController($scope, userFactory) {
+var mod = angular.module("SurveyQuestions");
+mod.controller("userListController", ['$scope', 'userFactory',
+    function ($scope, userFactory) {
 
         $scope.title = "Manage Users";
 
@@ -14,4 +12,5 @@
             })
 
     }
-}());
+]);
+
