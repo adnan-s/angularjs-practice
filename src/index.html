@@ -3,14 +3,13 @@
 
 <head>
     <title>Document</title>
+    <base href="/">
     <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
     <script src="/dist/vendors/jquery.js"></script>
     <link href="/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="/dist/vendors/bootstrap.min.js"></script>
     <script src="/dist/vendors/angular.js"></script>
     <script src="/dist/vendors/angular-route.js"></script>
-
-    <script src="dist/js/bundle.js"></script>
     
 </head>
 
@@ -25,7 +24,7 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/surveyboard">Survey Board</a>
@@ -60,6 +59,8 @@
 
     <div class="container" ng-view>
     </div>
+
+    <script src="dist/js/bundle.js"></script>
 
 </body>
 
