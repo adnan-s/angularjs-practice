@@ -4,7 +4,6 @@ var port = 3000;
 var app = express();
 app.use(express.json());
 
-app.use('/node_modules', express.static('node_modules'));
 app.use('/dist', express.static('dist'));
 
 app.get('/', function(req, res) {

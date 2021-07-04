@@ -5,6 +5,16 @@ var del = require('del');
 var port = process.env.PORT || config.port;
 var browserSync = require('browser-sync');
 
+var tasks = {
+    default: 'default',
+    clean: 'clean',
+    css: 'css',
+    packages: 'packages',
+    html: 'html',
+    javaScript: 'javaScript',
+    devServer: 'dev-server'
+}
+
 function startBrowsersync() {
     console.log('Sync in action...');
     if (browserSync.active) {
@@ -32,31 +42,30 @@ function startBrowsersync() {
     browserSync(options);
 }
 
-gulp.task('clean', async function (done) {
+gulp.task(tasks.clean, async function (done) {
     console.log('*** Deleting dist folder ***');
     return del('dist', done)
 })
 
-gulp.task('packages', async function () {
+gulp.task(tasks.packages, async function () {
     console.log('*** Copying npm-packages ***');
     return gulp.src(config.packages)
         .pipe(gulp.dest('dist/vendors'));
 })
 
-gulp.task('css', async function () {
+gulp.task(tasks.css, async function () {
     console.log('*** Copying Bootstrap ***');
     return gulp.src(config.styles)
         .pipe(gulp.dest('dist/css'));
 })
 
-gulp.task('html', async function () {
+gulp.task(tasks.html, async function () {
     console.log('*** Copying html ***');
     return gulp.src(config.html)
-        .pipe(gulp.dest('dist'))
-        .pipe(startBrowsersync());
+        .pipe(gulp.dest('dist'));
 });
 
-gulp.task('javaScript', async function () {
+gulp.task(tasks.javaScript, async function () {
     console.log('*** Transpiling Javascript ***');
     return gulp.src(config.javaScript)
         .pipe($.ngAnnotate())
@@ -67,7 +76,7 @@ gulp.task('javaScript', async function () {
         .pipe(gulp.dest('dist/js'));
 })
 
-gulp.task('dev-server', function () {
+gulp.task(tasks.devServer, function () {
     var isDev = true;
     var nodemonOptions = {
         server: config.server,
@@ -77,7 +86,9 @@ gulp.task('dev-server', function () {
             'NODE-ENV': isDev ? 'dev' : 'prod'
         },
         watch: [
-            config.server
+            'src/**/*.html',
+            'src/**/*.js',
+            'src/*.js'
         ]
     }
     return $.nodemon(nodemonOptions)
@@ -102,10 +113,15 @@ gulp.task('dev-server', function () {
         })
 })
 
-gulp.task('default', gulp.series('clean', 'packages', 'css', 'html', 'javaScript', 'dev-server', function () {
-    gulp.watch(config.javaScript, gulp.series(['javaScript']));
-    gulp.watch(config.html, gulp.series(['html']));
-    gulp.watch(config.styles, gulp.series(['css']));
+gulp.task(tasks.default, gulp.series(tasks.clean,
+    tasks.packages,
+    tasks.css,
+    tasks.html,
+    tasks.javaScript,
+    function () {
+        gulp.watch(config.javaScript, gulp.series(['javaScript']));
+        gulp.watch(config.html, gulp.series(['html']));
+        gulp.watch(config.styles, gulp.series(['css']));
 
-    console.log('*** watching for change ***');
-}));
+        console.log('*** watching for change ***');
+    }));
